@@ -4,8 +4,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     console.log(req.query);
 
-    res.render('index', {
-        title: 'Test Node REST Services View',
+    res.render('prettyprint', {
+        title: 'Pretty printer view',
         data: JSON.stringify(req.query)
     });
 });
