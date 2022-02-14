@@ -3,6 +3,12 @@ extends layout
 block content
   h1= title
   p  
+  p received: #{data} in url
 
-  p Diego, si ves esto accediste al ws
-  p recibi: #{data}
+  p Rest service
+  form(action="#{data.url}", method="post") 
+    p body
+    input(type="text" name="body" id="body" placeholder="Enter body here")
+
+  script
+    include  
