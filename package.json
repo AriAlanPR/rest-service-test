@@ -7,18 +7,12 @@
     "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "postcss": "^8.4.6",
-    "postcss-cli": "^9.1.0",
     "pug": "^2.0.4"
   },
-  "license": "0BSD",
-  "devDependencies": {
-    "tailwindcss": "^3.0.22"
-  }
+  "license": "MIT"
 }
