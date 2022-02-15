@@ -1,15 +1,14 @@
 h1= title
 
-p Rest service
-    form(action="", method="") 
-        p JSON:
-        textarea( name="body" id="body" placeholder="Enter body here")
-        input(type="button" value="Make Pretty" onclick="showTxtPrettyJSON();")
-    br
-    br
-    div(id="jsoncontent")
-    br
-    br
-    div(id="injectedprettyprint")
-        iframe(src="https://jsonformatter.org/json-pretty-print", title="prettydisplay" height="40%" width="80%" frameborder="0") 
-    script(src="/js/codelogic.js")
+form(action="", method="") 
+    p Text with slashes:
+    textarea( name="body" id="body" placeholder="Enter body here")
+    input(type="button" value="Make Pretty" onclick="showTxtPrettyJSON();")
+br
+br
+div(id="jsoncontent")
+br
+br
+div(id="injectedprettyprint")
+    iframe(src="https://jsonformatter.org/json-pretty-print", title="prettydisplay" height="40%" width="80%" frameborder="0") 
+script(src="/js/codelogic.js")
