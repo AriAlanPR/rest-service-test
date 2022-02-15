@@ -1,18 +1,36 @@
 extends layout
 
 block content
-    h1= title
-
-    form(action="", method="") 
-        p(class="form-label") Text with slashes:
-        textarea( name="body" id="body" class="form-control" placeholder="Enter body here")
+    div(class="hero") 
+        h1= title
+    
+    div(class="content-wrapper")
+        form(action="", method="") 
+            p(class="form-label") Request to url:
+            input(type="text", id="requesturl" placeholder="Enter url here")
+            br
+            p(class="form-label") Method:
+            select(id="method")
+                option(value="POST") POST 
+                option(value="GET") GET 
+            br
+            br
+            p(class="form-label") Body:
+            textarea( name="json" id="json" class="form-control" placeholder="Parameter json")
+            br
+            input(type="button" value="Request" class="btn btn-dark" onclick="Request();")
+            br
+            br
+            p(class="form-label") Text with slashes:
+            textarea( name="body" id="body" class="form-control" placeholder="Enter response with slashes here")
+            br
+            input(type="button" value="Make Pretty" class="btn btn-dark" onclick="showTxtPrettyJSON();")
         br
-        input(type="button" value="Make Pretty" class="btn btn-dark" onclick="showTxtPrettyJSON();")
-    br
-    br
-    div(id="jsoncontent")
-    br
-    br
-    div(id="injectedprettyprint")
-        iframe(src="https://jsonformatter.org/json-pretty-print", title="prettydisplay" height="400" width="80%" frameborder="0") 
+        br
+        div(id="jsoncontent")
+        br
+        br
+        div(id="injectedprettyprint")
+            iframe(src="https://codebeautify.org/jsonviewer", title="prettydisplay" height="400" width="80%" frameborder="0") 
+
     script(src="/js/codelogic.js")
