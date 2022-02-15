@@ -17,6 +17,7 @@ function showTxtPrettyJSON() {
 async function Request() {
     try {
         let json = document.getElementById("json").value;
+        json = JSON.parse(json);
         let url = document.getElementById("requesturl").value;
         let method = document.getElementById("method").value;
 
