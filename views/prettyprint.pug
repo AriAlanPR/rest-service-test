@@ -1,10 +1,9 @@
 h1= title
 
 form(action="", method="") 
-    p Text with slashes:
-    textarea( name="body" id="body" placeholder="Enter body here")
-    br
-    input(type="button" value="Make Pretty" onclick="showTxtPrettyJSON();")
+    p(class="form-label") Text with slashes:
+    textarea( name="body" id="body" class="form-control" placeholder="Enter body here")
+    input(type="button" value="Make Pretty" class="btn btn-dark" onclick="showTxtPrettyJSON();")
 br
 br
 div(id="jsoncontent")
