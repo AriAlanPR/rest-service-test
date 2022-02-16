@@ -1,5 +1,3 @@
-const res = require("express/lib/response");
-
 console.log("Entered code logic");
 
 function showTxtPrettyJSON() {
