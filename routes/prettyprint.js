@@ -27,9 +27,9 @@ router.post('/', async function(req, res){
         }
     });
 
-    response = await response.json();
+    response = await response.text();
 
-    res.json(response);
+    res.send(response);
 });
 
 module.exports = router;

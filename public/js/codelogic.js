@@ -15,23 +15,24 @@ function showTxtPrettyJSON() {
 async function Request() {
     try {
         let json = JSON.parse(document.getElementById("json").value);
-        json.body = json;
+        json = {body: json};
         json.url = document.getElementById("requesturl").value;
         json.method = document.getElementById("method").value;
         
 
-        let response = await fetch('/', {
+        let response = await fetch('/prettyprint', {
             body: JSON.stringify(json),
-            method: method,
+            method: 'POST',
             headers: { 
                 "Content-Type": "application/json"
             }
         });
 
-        response = await response.json();
+        response = await response.text();
 
-        document.getElementById("jsoncontent").innerHTML = JSON.stringify(response);
+        document.getElementById("body").value = JSON.stringify(response);
     } catch (e) {
         console.error("Error in request", e.message);
+        console.error("Error in line", e.lineNumber);
     }
 }

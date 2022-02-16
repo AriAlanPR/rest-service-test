@@ -7,7 +7,7 @@ block content
     div(class="content-wrapper")
         form(action="", method="") 
             p(class="form-label") Request to url:
-            input(type="text", id="requesturl" placeholder="Enter url here")
+            input(type="text", id="requesturl" placeholder="Enter url here" value="https://3393086-sb1.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1401&deploy=1")
             br
             p(class="form-label") Method:
             select(id="method")
@@ -16,7 +16,7 @@ block content
             br
             br
             p(class="form-label") Body:
-            textarea( name="json" id="json" class="form-control" placeholder="Parameter json")
+            textarea( name="json" id="json" class="form-control" placeholder="Parameter json") {"customer_id": "1863", "cTroxellSKU": "SKU 0010102", "nTroxellSKUCost": "39.00", "nTroxellSKUList": "1800.00" }
             br
             input(type="button" value="Request" class="btn btn-dark" onclick="Request();")
             br
