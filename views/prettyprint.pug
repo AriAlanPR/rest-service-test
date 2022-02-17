@@ -7,16 +7,25 @@ block content
     div(class="content-wrapper")
         form(action="", method="") 
             p(class="form-label") Request to url:
-            input(type="text", id="requesturl" placeholder="Enter url here" value="https://3393086-sb1.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1401&deploy=1")
+            input(type="text", id="requesturl" class="form-control" placeholder="Enter url here")
             br
             p(class="form-label") Method:
-            select(id="method")
+            select(id="method" class="form-select")
                 option(value="POST") POST 
                 option(value="GET") GET 
             br
             br
+            div(class="form-check form-switch")
+                input(type="checkbox" id="tba" class="form-check-input" onclick="enableNSInstance(this);") 
+                label(class="form-check-label" for="tba") Netsuite Instance:
+            br
+            select(id="netsuite_instance" class="form-select" disabled="true")
+                option(value="Trox") Troxell 
+                option(value="JDGroup") JD Group 
+            br
+            br
             p(class="form-label") Body:
-            textarea( name="json" id="json" class="form-control" placeholder="Parameter json") {"customer_id": "1863", "cTroxellSKU": "SKU 0010102", "nTroxellSKUCost": "39.00", "nTroxellSKUList": "1800.00" }
+            textarea( name="json" id="json" class="form-control" placeholder="Parameter json")
             br
             input(type="button" value="Request" class="btn btn-dark" onclick="Request();")
             br
@@ -24,7 +33,7 @@ block content
             p(class="form-label") Text with slashes:
             textarea( name="body" id="body" class="form-control" placeholder="Enter response with slashes here")
             br
-            input(type="button" value="Make Pretty" class="btn btn-dark" onclick="showTxtPrettyJSON();")
+            input(type="button" id="makepretty" value="Make Pretty" class="btn btn-dark" onclick="showTxtPrettyJSON();")
         br
         br
         div(id="jsoncontent")

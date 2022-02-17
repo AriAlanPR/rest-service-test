@@ -18,7 +18,9 @@ async function Request() {
         json = {body: json};
         json.url = document.getElementById("requesturl").value;
         json.method = document.getElementById("method").value;
-        
+        if(document.getElementById("tba").checked) {
+            json.netsuite_instance = document.getElementById("netsuite_instance").value;
+        }
 
         let response = await fetch('/prettyprint', {
             body: JSON.stringify(json),
@@ -30,9 +32,18 @@ async function Request() {
 
         response = await response.text();
 
-        document.getElementById("body").value = JSON.stringify(response);
+        document.getElementById("body").value = response;
+        document.getElementById("makepretty").click();
     } catch (e) {
         console.error("Error in request", e.message);
         console.error("Error in line", e.lineNumber);
+    }
+}
+
+function enableNSInstance(sender) {
+    if(sender.checked) {
+        document.getElementById("netsuite_instance").disabled = false;
+    } else {
+        document.getElementById("netsuite_instance").disabled = true;
     }
 }
