@@ -32,7 +32,8 @@ router.post('/', async function(req, res){
 
         let base_url = urldata[0];
         let query = urldata[1];
-        let signature = tba({netsuite_instance: body.netsuite_instance, method: body.method, base_url: base_url, query: query});
+        let timestamp = body.timestamp;
+        let signature = tba({timestamp: timestamp, netsuite_instance: body.netsuite_instance, method: body.method, base_url: base_url, query: query});
         headers.Authorization = signature;
         
     }

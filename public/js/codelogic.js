@@ -18,6 +18,7 @@ async function Request() {
         json = {body: json};
         json.url = document.getElementById("requesturl").value;
         json.method = document.getElementById("method").value;
+        json.timestamp = (parseInt(Date.now() / 1000));
         if(document.getElementById("tba").checked) {
             json.netsuite_instance = document.getElementById("netsuite_instance").value;
         }

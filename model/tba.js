@@ -2,7 +2,6 @@ const uuid = require('uuid');
 const crypto = require('crypto');
 
 //parse timestamp to int
-const oauth_timestamp = (parseInt(Date.now() / 1000));
 const oauth_nonce = uuid.v1().replace(/-/g, "").substring(0,24);
 const signature_for = {
     Trox: {
@@ -33,19 +32,20 @@ function encodeParams(parameters) {
     container.push(`oauth_token=${parameters.oauth_token}`);
     container.push(`oauth_version=${parameters.oauth_version}`);
     container.push(`script=${parameters.script}`);
-
+    
     var encodedParameters = container.join('&');
     console.log('container.join', encodedParameters);
-
+    
     return encodedParameters;
 }
 
 module.exports = function(params) {
+    const oauth_timestamp = params.timestamp;
     const netsuite_instance = signature_for[params.netsuite_instance];
     const method = params.method;
     const base_url = params.base_url;
     const query = new URLSearchParams(params.query);
-
+    
     if(netsuite_instance) {
         const parameters = {
             deploy: parseInt(query.get("deploy")),
