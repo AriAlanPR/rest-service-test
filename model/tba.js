@@ -1,7 +1,8 @@
 const uuid = require('uuid');
 const crypto = require('crypto');
 
-const oauth_timestamp = (Math.round(new Date().getTime() / 1000));
+//parse timestamp to int
+const oauth_timestamp = (parseInt(Date.now() / 1000));
 const oauth_nonce = uuid.v1().replace(/-/g, "").substring(0,24);
 const signature_for = {
     Trox: {
