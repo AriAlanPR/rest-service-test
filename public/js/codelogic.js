@@ -25,7 +25,7 @@ async function Request() {
             json.netsuite_instance = document.getElementById("netsuite_instance").value;
         }
 
-        let response = await fetch('/edi', {
+        let response = await fetch('/', {
             body: JSON.stringify(json),
             method: 'POST',
             headers: { 

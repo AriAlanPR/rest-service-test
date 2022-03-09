@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var prettyprintRouter = require('./routes/prettyprint');
+var xmlppRouter = require('./routes/xmlpp.js');
 
 var cors = require('cors');
 
@@ -27,6 +28,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/prettyprint', prettyprintRouter);
+app.use('/xmlpp', xmlppRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
