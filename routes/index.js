@@ -10,8 +10,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     console.log(req.query);
     
-    res.render('edi', {
-        title: 'EDI Bots to Netsuite',
+    res.render('index', {
+        title: 'Rest request to Netsuite',
         data: JSON.stringify(req.query)
     });
 });
