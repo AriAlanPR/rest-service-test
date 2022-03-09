@@ -6,8 +6,14 @@ block content
     
     div(class="content-wrapper")
         form(action="", method="") 
-            p(class="form-label") Request to url:
-            input(type="text", id="requesturl" class="form-control" placeholder="Enter url here")
+            p(class="form-label") Organization ID:
+            input(type="text", id="organizationid" class="form-control" placeholder="Enter organization id here")
+            br
+            p(class="form-label") Script number:
+            input(type="text", id="scriptnumber" class="form-control" placeholder="Enter script number here")
+            br
+            p(class="form-label") Deploy number:
+            input(type="text", id="deploynumber" class="form-control" placeholder="Enter deploy number here")
             br
             p(class="form-label") Method:
             select(id="method" class="form-select")
@@ -39,7 +45,7 @@ block content
         div(id="jsoncontent")
         br
         br
-        div(id="injectedprettyprint")
-            iframe(src="https://codebeautify.org/jsonviewer", title="prettydisplay" height="400" width="80%" frameborder="0") 
+        div(id="injectededi")
+            iframe(src="https://codebeautify.org/jsonviewer", title="prettydisplay" height="600" width="80%" frameborder="0") 
 
     script(src="/js/codelogic.js")

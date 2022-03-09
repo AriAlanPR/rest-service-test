@@ -16,14 +16,16 @@ async function Request() {
     try {
         let json = JSON.parse(document.getElementById("json").value);
         json = {body: json};
-        json.url = document.getElementById("requesturl").value;
+        json.organization = document.getElementById("organizationid").value;
+        json.script = document.getElementById("scriptnumber").value;
+        json.deploy = document.getElementById("deploynumber").value;
         json.method = document.getElementById("method").value;
         json.timestamp = (parseInt(Date.now() / 1000));
         if(document.getElementById("tba").checked) {
             json.netsuite_instance = document.getElementById("netsuite_instance").value;
         }
 
-        let response = await fetch('/prettyprint', {
+        let response = await fetch('/edi', {
             body: JSON.stringify(json),
             method: 'POST',
             headers: { 
@@ -33,6 +35,7 @@ async function Request() {
 
         response = await response.text();
 
+        console.log("response:", response);
         document.getElementById("body").value = response;
         document.getElementById("makepretty").click();
     } catch (e) {

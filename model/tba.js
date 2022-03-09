@@ -5,20 +5,20 @@ const crypto = require('crypto');
 const oauth_nonce = uuid.v1().replace(/-/g, "").substring(0,24);
 const signature_for = {
     Trox: {
-        consumer_key: "f67937de9b073215e3bc3f0257208109344207649027c3982aa4bcb1bc04eeac",
-        consumer_secret: "84138d738d37db327a481e7fca94c8788338dc6d9af4c17ab0d8253d2d8be477",
-        access_token: "cd0ab3f9eab5df82e573f8631b7b5828540e08d8ecf74465b9ce6139ed11b2a0",
-        token_secret: "a15460f7671f882b59718a692cd3e0566325b72ac5cb23d76e75de8ae828bf3a",
-        realm: "3393086_SB1",
-        organization: "3393086-sb1"
+        consumer_key: process.env.TROXCK || "",
+        consumer_secret: process.env.TROXCS || "",
+        access_token: process.env.TROXAT || "",
+        token_secret: process.env.TROXTS || "",
+        realm: process.env.TROXREALM || "",
+        organization: process.env.TROXORGANIZATION || ""
     },
     JDGroup: {
-        consumer_key: "347d06d618f5255b011dc214c6d23baf0b3b92fbdc58ceb3c192ccddf03086cb",
-        consumer_secret: "d8e6160af221b214f72e3a0c1895b197ecc33a09fe0b3dbb376ec31282cf35ae",
-        access_token: "837ac86209b42ca34aba3f6514d7bbcd3d17ee2a26bc8667edaf24c0f4c90440",
-        token_secret: "358c05c74d522d760e2018f46f4b80e2b4a46e3e2102ce85c48dfc7af82676d3",
-        realm: "TSTDRV1681055",
-        organization: "tstdrv1681055"
+        consumer_key: process.env.JDGROUPCK || "",
+        consumer_secret: process.env.JDGROUPCS || "",
+        access_token: process.env.JDGROUPAT || "",
+        token_secret: process.env.JDGROUPTS || "",
+        realm: process.env.JDGROUPREALM || "",
+        organization: process.env.JDGROUPORGANIZATION || ""
     }
 }
 
