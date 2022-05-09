@@ -1,30 +1,43 @@
 const uuid = require('uuid');
 const crypto = require('crypto');
+const dotenv = require('dotenv');
+const fs = require('fs');
+const env = dotenv.parse(fs.readFileSync(`${__dirname}/../.env`));
+
+console.log("ENV data", env);
 
 //parse timestamp to int
 const oauth_nonce = uuid.v1().replace(/-/g, "").substring(0,24);
 const signature_for = {
-    Trox: {
-        consumer_key: process.env.TROXCK || "",
-        consumer_secret: process.env.TROXCS || "",
-        access_token: process.env.TROXAT || "",
-        token_secret: process.env.TROXTS || "",
-        realm: process.env.TROXREALM || "",
-        organization: process.env.TROXORGANIZATION || ""
+    Trox_S: {
+        consumer_key: process.env.TROXSBCK || env.TROXSBCK || "",
+        consumer_secret: process.env.TROXSBCS || env.TROXSBCS || "",
+        access_token: process.env.TROXSBAT || env.TROXSBAT || "",
+        token_secret: process.env.TROXSBTS || env.TROXSBTS || "",
+        realm: process.env.TROXSBREALM || env.TROXSBREALM || "",
+        organization: process.env.TROXSBORGANIZATION || env.TROXSBORGANIZATION || ""
+    },
+    Trox_P: {
+        consumer_key: process.env.TROXPRODCK || env.TROXPRODCK || "",
+        consumer_secret: process.env.TROXPRODCS || env.TROXPRODCS || "",
+        access_token: process.env.TROXPRODAT || env.TROXPRODAT || "",
+        token_secret: process.env.TROXPRODTS || env.TROXPRODTS || "",
+        realm: process.env.TROXPRODREALM || env.TROXPRODREALM || "",
+        organization: process.env.TROXPRODORGANIZATION || env.TROXPRODORGANIZATION || ""
     },
     JDGroup: {
-        consumer_key: process.env.JDGROUPCK || "",
-        consumer_secret: process.env.JDGROUPCS || "",
-        access_token: process.env.JDGROUPAT || "",
-        token_secret: process.env.JDGROUPTS || "",
-        realm: process.env.JDGROUPREALM || "",
-        organization: process.env.JDGROUPORGANIZATION || ""
+        consumer_key: process.env.JDGROUPCK || env.JDGROUPCK || "",
+        consumer_secret: process.env.JDGROUPCS || env.JDGROUPCK || "",
+        access_token: process.env.JDGROUPAT || env.JDGROUPCK || "",
+        token_secret: process.env.JDGROUPTS || env.JDGROUPCK || "",
+        realm: process.env.JDGROUPREALM || env.JDGROUPCK || "",
+        organization: process.env.JDGROUPORGANIZATION || env.JDGROUPCK || ""
     }
 }
 
 function encodeParams(parameters) {
     var container = new Array();
-    container.push(`deploy=${1}`);
+    container.push(`deploy=${parameters.deploy}`);
     container.push(`oauth_consumer_key=${parameters.oauth_consumer_key}`);
     container.push(`oauth_nonce=${parameters.oauth_nonce}`);
     container.push(`oauth_signature_method=${parameters.oauth_signature_method}`);
@@ -40,12 +53,13 @@ function encodeParams(parameters) {
 }
 
 module.exports = function(params) {
+    console.log("params authorization: ", signature_for.Trox_S);
     const oauth_timestamp = params.timestamp;
     const netsuite_instance = signature_for[params.netsuite_instance];
     const method = params.method;
     const base_url = params.base_url;
     const query = new URLSearchParams(params.query);
-    
+
     if(netsuite_instance) {
         const parameters = {
             deploy: parseInt(query.get("deploy")),

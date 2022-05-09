@@ -1,11 +1,16 @@
-let tba = require("../model/tba");
-var fetch = require('node-fetch');
+const tba = require("../model/tba");
+const fetch = require('node-fetch');
 // const path = require('path');
 // const cloudify = require('../model/cloudify');
 
-var express = require('express');
+const express = require('express');
 // const child_process = require("child_process");
-var router = express.Router();
+const router = express.Router();
+// if(process.env !== "production") {
+//     //load environment variables
+//     require('dotenv').config();
+//     console.log(process.env);
+// }
 
 router.get('/', function(req, res, next) {
     console.log(req.query);
