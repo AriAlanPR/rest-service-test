@@ -3,7 +3,7 @@ console.log("Entered code logic");
 function showTxtPrettyJSON() {
     try {
         let json = document.getElementById("body").value;
-        json = JSON.parse(json);
+        if(json.includes('\\')) json = JSON.parse(json);
         console.log("json: ");
         console.log(json);
         document.getElementById("jsoncontent").innerHTML = json;
